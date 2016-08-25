@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group = 'com.chamiz.jbehave'
+version = '1.0'
+
+description = """JBehave Stories"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'org.jbehave', name: 'jbehave-spring', version:'4.0.5'
+    compile group: 'org.jbehave', name: 'jbehave-core', version:'4.0.5', classifier:'resources'
+    compile group: 'org.jbehave.site', name: 'jbehave-site-resources', version:'3.3'
+}
