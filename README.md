@@ -1,7 +1,8 @@
 # JBehaveSample
 Wroking sample using JBehave and Gradle
 
-If you willing to update files to your IDE please run 
+If you willing to update files to your IDE please run commands
+
 gradle idea (for IDEA IDE) or
 gradle eclipse (for Eclipse IDE)
 
