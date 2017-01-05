@@ -10,22 +10,27 @@ package com.chamiz.jbehave.steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.junit.Assert;
 
 public class MySteps {
+    int result = 0;
 
-    @Given("I am your first step")
+    @Given("As a user")
     public void myFirstGivenStep(){
         System.out.println("This is your first given step");
     }
 
-    @When("I will learn JBehave")
-    public void myFirstWhenStep(){
-        System.out.println("This is your first when step");
+    @When("I will add $number1 and $number2")
+    public void myFirstWhenStep(String number1, String number2) {
+        System.out.println("Number 1 -->" + number1);
+        System.out.println("Number 2 -->" + number2);
+        result = Integer.parseInt(number1) + Integer.parseInt(number2);
     }
 
-    @Then("I shall be happy")
-    public void myFirstThenStep(){
-        System.out.println("This is your first then step");
+    @Then("Results should be $result")
+    public void myFirstThenStep(String expectedResult) {
+        Assert.assertEquals("Error", Integer.valueOf(expectedResult), Integer.valueOf(result));
+        System.out.println("Results validated");
     }
 
     
