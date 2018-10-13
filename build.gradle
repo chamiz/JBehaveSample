@@ -16,6 +16,6 @@ repositories {
 }
 dependencies {
     compile group: 'org.jbehave', name: 'jbehave-spring', version:'4.0.5'
-    compile group: 'org.jbehave', name: 'jbehave-core', version:'4.0.5', classifier:'resources'
+    compile group: 'org.jbehave', name: 'jbehave-core', version:'4.0.5'
     compile group: 'org.jbehave.site', name: 'jbehave-site-resources', version:'3.3'
 }
