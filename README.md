@@ -8,7 +8,9 @@ gradle eclipse (for Eclipse IDE)
 
 You can simply run test using JUnit too. 
 
-Right click on src/main/java/com/chamiz/jbehave/MyStories.java and run as JUnit test.
+Right click on src/test/java/com/chamiz/MyStories.java and run as JUnit test.
+
+or Execute as gradle test
 
 If you have further clarifications please contact me.
 

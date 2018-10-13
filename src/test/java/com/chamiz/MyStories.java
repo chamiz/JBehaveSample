@@ -1,11 +1,5 @@
-package com.chamiz.jbehave;
+package com.chamiz;
 
-/**
- * Chamila Ambahera
- * 25/8/16
- * chamila.ambahera@gmail.com
- * JBehave Sample
- */
 
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
@@ -29,22 +23,20 @@ import org.springframework.context.ApplicationContext;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.*;
 
 /**
- * <p>
- * {@link Embeddable} class to run multiple textual stories via JUnit using Spring Dependency Injection to compose the steps classes.
- * </p>
- * <p>
- * Stories are specified in classpath and correspondingly the {@link LoadFromClasspath} story loader is configured.
- * </p> 
+ * Chamila Ambahera
+ * 25/8/16
+ * chamila.ambahera@gmail.com
+ * JBehave Sample
  */
+
 public class MyStories extends JUnitStories {
     
     public MyStories() {
-        configuredEmbedder().embedderControls().doGenerateViewAfterStories(true).doIgnoreFailureInStories(true)
-                .doIgnoreFailureInView(true).useThreads(2).useStoryTimeoutInSecs(60);
+        configuredEmbedder().embedderControls().doGenerateViewAfterStories(true).doIgnoreFailureInStories(false)
+                .doIgnoreFailureInView(false).useThreads(2).useStoryTimeouts("60");
     }
 
     @Override
@@ -69,16 +61,17 @@ public class MyStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        String path = "com.chamiz.jbehave".replaceAll("\\.", "/");
-        ApplicationContext context = new SpringApplicationContextFactory(path+"/my_steps.xml").createApplicationContext();
+        String path = "com.chamiz".replaceAll("\\.", "/");
+        ApplicationContext context = new SpringApplicationContextFactory(path+ "/my_steps.xml").createApplicationContext();
         return new SpringStepsFactory(configuration(), context);
     }
 
 
     @Override
     protected List<String> storyPaths() {
-        return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()), "**/*.story", "**/excluded*.story");
-                
+        return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"),
+                "**/" + System.getProperty("storyFilter", "*") + ".story",
+                "**/exclude_*.story");
     }
         
 }

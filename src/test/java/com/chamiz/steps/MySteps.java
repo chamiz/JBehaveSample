@@ -1,4 +1,9 @@
-package com.chamiz.jbehave.steps;
+package com.chamiz.steps;
+
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+import org.junit.Assert;
 
 /**
  * Chamila Ambahera
@@ -7,13 +12,8 @@ package com.chamiz.jbehave.steps;
  * JBehave Sample
  */
 
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
-import org.junit.Assert;
-
 public class MySteps {
-    int result = 0;
+    private int result = 0;
 
     @Given("As a user")
     public void myFirstGivenStep(){
